@@ -2,7 +2,7 @@
 By Vicky Fang<br>
 ### Contents:
 * **[poi_id.py](poi_id.py):** Python code to identify Person of Interest (poi) from selected financial and email features
-* **[enron_submission_questions.py](enron_submission_questions.py):** Documentation of the work
+* **[enron_submission_questions.md](enron_submission_questions.md):** Documentation of the work
 
 ### References:
 * [sklearn.tree.DecisionTreeClassifier] (http://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)
