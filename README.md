@@ -1,7 +1,10 @@
 # Identify Fraud from Enron Email
 By Vicky Fang<br>
+
+Enron was one of the largest companies in the United States. It was bankrupted in 2002 due to corporate fraud. The goal of the project is to use the Enron datasets to identify Person of Interest (POI), *"individuals who were indicted, reached a settlement or plea deal with the government, or testified in exchange for prosecution immunity"*. The dataset includes tens of thousands of emails and detailed financial data of top executives at Enron. Using the machine learning skills taught in class, I will develop an algorithm to identify a POI based on the financial and email data. 
+
 ### Contents:
-* **[poi_id.py](poi_id.py):** Python code to identify Person of Interest (POI) from selected financial and email features;
+* **[poi_id.py](poi_id.py):** Python code to identify POI from selected financial and email features;
 * **[enron_submission_questions.md](enron_submission_questions.md):** Documentation of the work.
 
 ### References:
