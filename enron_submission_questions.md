@@ -1,12 +1,9 @@
 ## Enron Submission Free-Response Questions
-1. Summarize for us the goal of this project and how machine learning is useful in trying to accomplish it. As part of your answer, give some background on the dataset and how it can be used to answer the project question. Were there any outliers in the data when you got it, and how did you handle those?  [relevant rubric items: ìdata explorationî, ìoutlier investigationî]
-
+1. Summarize for us the goal of this project and how machine learning is useful in trying to accomplish it. As part of your answer, give some background on the dataset and how it can be used to answer the project question. Were there any outliers in the data when you got it, and how did you handle those?  [relevant rubric items: ‚Äúdata exploration‚Äù, ‚Äúoutlier investigation‚Äù]
 The goal of the project is to use the dataset to identify person of interest (poi), *"individuals who were indicted, reached a settlement or plea deal with the government, or testified in exchange for prosecution immunity"*. The dataset includes tens of thousands of emails and detailed financial data of top executives at Enron, that was one of the largest companies in the United States. It was bankrupted in 2002 due to corporate fraud. Using the machine learning skills, I hope I can develop an algorithm to identify a poi based on the financial and email data. 
-
 Since I'm interested in individual people, I want to exclude the data that do not represent individuals; I know that we can access individuals by *enron_data["LASTNAME FIRSTNAME"]* or  *enron_data["LASTNAME FIRSTNAME MIDDLEINITIAL"]*. I've used a regular expression to identify the names that do not meet either *LASTNAME FIRSTNAME* or *LASTNAME FIRSTNAME MIDDLEINITIAL*. Then I've identified 2 outliers, *'TOTAL'* and *'THE TRAVEL AGENCY IN THE PARK'*. Then I've tried to remove the data point that have too many 'NaN' values, which is *'LOCKHART EUGENE E'*. This individual only has a poi value ('False'), which won't help us understand the relationships between poi and the other data. That's why I've removed it as well. Please see more detailed explanations in the code [poi_id.py](poi_id.py).
 
-2. What features did you end up using in your POI identifier, and what selection process did you use to pick them? Did you have to do any scaling? Why or why not? As part of the assignment, you should attempt to engineer your own feature that does not come ready-made in the dataset -- explain what feature you tried to make, and the rationale behind it. (You do not necessarily have to use it in the final analysis, only engineer and test it.) In your feature selection step, if you used an algorithm like a decision tree, please also give the feature importances of the features that you use, and if you used an automated feature selection function like SelectKBest, please report the feature scores and reasons for your choice of parameter values.  [relevant rubric items: ìcreate new featuresî, ìintelligently select featuresî, ìproperly scale featuresî]
-
+2. What features did you end up using in your POI identifier, and what selection process did you use to pick them? Did you have to do any scaling? Why or why not? As part of the assignment, you should attempt to engineer your own feature that does not come ready-made in the dataset -- explain what feature you tried to make, and the rationale behind it. (You do not necessarily have to use it in the final analysis, only engineer and test it.) In your feature selection step, if you used an algorithm like a decision tree, please also give the feature importances of the features that you use, and if you used an automated feature selection function like SelectKBest, please report the feature scores and reasons for your choice of parameter values.  [relevant rubric items: ‚Äúcreate new features‚Äù, ‚Äúintelligently select features‚Äù, ‚Äúproperly scale features‚Äù]
 Below is the feature list before feature selection:
 ```python
 my_features_list = ['poi','salary', 'deferral_payments',  'total_payments', 'loan_advances', 
@@ -35,11 +32,11 @@ Since I use a decision tree algorithm, I can get the feature importances of the 
 ```
 It seems that the feature, *"fraction_to_poi"*, is the most powerful feature. 
 
-3. What algorithm did you end up using? What other one(s) did you try? How did model performance differ between algorithms?  [relevant rubric item: ìpick an algorithmî]
+3. What algorithm did you end up using? What other one(s) did you try? How did model performance differ between algorithms?  [relevant rubric item: ‚Äúpick an algorithm‚Äù]
 
 I've tried and tested 3 algorithms in total, GaussianNB, DecisionTreeClassifier, and Support Vector Classification (SVC). I end up using DecisionTreeClassifier because it has a good balance among accuracy, precision and recall scores. GaussianNB is easy to use, but it doesn't have a good accuracy score. Although SVC has a fairly good accuracy score (0.92), but I get this message when I try to call its precision score: *"UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples."* Calling the predicted values and actual test values, I've found that there's no True Positives. Therefore, I decide not to use the algorithm. DecisionTreeClassifier also gives me an accuracy score of 0.92; and I can tune its precision and recall scores to be greater than 0.3. 
 
-4. What does it mean to tune the parameters of an algorithm, and what can happen if you donít do this well?  How did you tune the parameters of your particular algorithm? What parameters did you tune? (Some algorithms do not have parameters that you need to tune -- if this is the case for the one you picked, identify and briefly explain how you would have done it for the model that was not your final choice or a different model that does utilize parameter tuning, e.g. a decision tree classifier).  [relevant rubric items: ìdiscuss parameter tuningî, ìtune the algorithmî]
+4. What does it mean to tune the parameters of an algorithm, and what can happen if you don‚Äôt do this well?  How did you tune the parameters of your particular algorithm? What parameters did you tune? (Some algorithms do not have parameters that you need to tune -- if this is the case for the one you picked, identify and briefly explain how you would have done it for the model that was not your final choice or a different model that does utilize parameter tuning, e.g. a decision tree classifier).  [relevant rubric items: ‚Äúdiscuss parameter tuning‚Äù, ‚Äútune the algorithm‚Äù]
 
 Tuning the parameters of an algorithm can bring out the best performance of an algorithm. For example, I use the DecisionTreeClassifier as my classifier. The parameters of the classifier, *"min_samples_split"* and *"random_state"*, can influence the accuracy score of the algorithm. To have the best estimator, I've used *"GridSearchCV"* to tune the parameters in my algorithm. The best estimator I found is when the 2 parameters are: *min_samples_split=3*, *random_state=10*. 
 
@@ -52,7 +49,7 @@ DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=None,
             presort=False, random_state=10, splitter='best'))])
 ```
 
-5. What is validation, and whatís a classic mistake you can make if you do it wrong? How did you validate your analysis?  [relevant rubric items: ìdiscuss validationî, ìvalidation strategyî]
+5. What is validation, and what‚Äôs a classic mistake you can make if you do it wrong? How did you validate your analysis?  [relevant rubric items: ‚Äúdiscuss validation‚Äù, ‚Äúvalidation strategy‚Äù]
 
 Validation is the process to assess whether an algorithm is actually doing what I want it to do. When we use training-testing split method, it's easy to make the test size either too big or too small. This will cause the algorithm either to be overfitting or failing to make predictions due to the small size of training data. I've chosen my test size to be 0.25 since it gives me the best performance.
 
@@ -63,7 +60,7 @@ feature_train, feature_test, label_train, label_test = train_test_split(features
 
 I also validate the performance of my algorithms using cross validation to automate the parameter tuning tests. I've used *"GridSearchCV"* to find the best estimator of my algorithms. For instance, as I mentioned previous, it helps me choose the *"min_samples_split"* and *"random_state"* values. *"GridSearchCV"* also helps me decide on whether to use SelectKBest or PCA for feature selection/dimensionality reduction as well as the number of features/components I should use for an algorithm. 
 
-6. Give at least 2 evaluation metrics and your average performance for each of them.  Explain an interpretation of your metrics that says something human-understandable about your algorithmís performance. [relevant rubric item: ìusage of evaluation metricsî]
+6. Give at least 2 evaluation metrics and your average performance for each of them.  Explain an interpretation of your metrics that says something human-understandable about your algorithm‚Äôs performance. [relevant rubric item: ‚Äúusage of evaluation metrics‚Äù]
 
 Below is the outcome after I use the testing script:
 
