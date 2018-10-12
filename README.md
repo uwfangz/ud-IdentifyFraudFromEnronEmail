@@ -1,10 +1,10 @@
 # Identify Fraud from Enron Email
 By Vicky Fang<br>
 ### Contents:
-* **poi_id.py:** Python code to identify Person of Interest (poi) from selected financial and email features
-* **enron_submission_questions.py:** Documentation of the work
+* **[poi_id.py](poi_id.py):** Python code to identify Person of Interest (poi) from selected financial and email features
+* **[enron_submission_questions.py](enron_submission_questions.py):** Documentation of the work
 
-### Reference:
+### References:
 * [sklearn.tree.DecisionTreeClassifier] (http://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)
 
 * [Decision boundary changing in sklearn each time I run code] https://stackoverflow.com/questions/41928453/decision-boundary-changing-in-sklearn-each-time-i-run-code
