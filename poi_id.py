@@ -6,7 +6,6 @@ import numpy as np
 import re
 sys.path.append("../tools/")
 
-from visualize_two_features import visualize_two_features
 from feature_format import featureFormat, targetFeatureSplit
 from tester import dump_classifier_and_data
 
