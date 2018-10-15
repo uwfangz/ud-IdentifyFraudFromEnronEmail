@@ -99,11 +99,11 @@ DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=None,
             min_samples_split=3, min_weight_fraction_leaf=0.0,
             presort=False, random_state=10, splitter='best'))])
 ```
-If the parameter tuning isn't done well, the algorithm can be either overfitting, in which case the algorithm is bad at generalizing to new data, or the algorithm doesn't have enough training data to make it accurate. For instance, if the *"min_samples_split"*parameter in DecisionTreeClassifier is set too small, the algorithm might overfit the data; on the other hand, if it's set too big, it might sacrifice the accuracy to alleviate the overfitting. 
+If the parameter tuning isn't done well, the algorithm can be either overfitting, in which case the algorithm is bad at generalizing to new data, or the algorithm doesn't have enough training data to make it accurate. For instance, if the *"min_samples_split"*parameter in DecisionTreeClassifier is set too small, the algorithm might overfit the data; on the other hand, if it's set too big, it sacrifices its performance of learning the pattern in the datasets. 
 
 *5\. What is validation, and what’s a classic mistake you can make if you do it wrong? How did you validate your analysis?  [relevant rubric items: “discuss validation”, “validation strategy”]*
 
-Validation is the process to assess whether an algorithm is actually doing what we want it to do. If a model is trained on the entire dataset, not only are we not sure about the performance of the training data, but also it can overfit to training data and reduce the model's ability to generalize to new data. 
+Validation is the process to assess whether an algorithm is actually doing what we want it to do. If a model is trained on the entire dataset, not only are we not sure about the performance of the training data, but also it can overfit the training data and reduce the model's ability to generalize to new data. 
 
 When we use training-testing split method, it's easy to make the test size either too big or too small. This will cause the algorithm either to be overfitting or failing to make predictions due to the small size of training data. I've chosen my test size to be 0.25 since it gives me the best performance.
 
